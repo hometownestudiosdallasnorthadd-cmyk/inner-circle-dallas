@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Inner Circle — Exclusive VIP Celebrity Meet & Greet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold-primary: #D4AF37;
+      --gold-light: #F3E5AB;
+      --gold-dark: #AA7C11;
+      --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA7C11);
+      --bg-dark: #0a0a0a;
+      --card-bg: #141414;
+      --text-main: #f5f5f5;
+      --text-muted: #a0a0a0;
+      --border-gold: rgba(212, 175, 55, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .gold-heading {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .gold-text {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header & Hero */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-gold);
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 100px 0 60px;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, rgba(10, 10, 10, 1) 70%);
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .event-meta {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-gold);
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: rgba(20, 20, 20, 0.8);
+    }
+
+    /* Buttons */
+    .btn-gold {
+      background: var(--gold-gradient);
+      color: #000;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      padding: 15px 35px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+    }
+
+    /* Ticket Selection Cards */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .ticket-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 40px 30px;
+      position: relative;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ticket-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold-primary);
+    }
+
+    .ticket-card.featured {
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    }
+
+    .badge {
+      position: absolute;
+      top: -15px;
+      right: 20px;
+      background: var(--gold-gradient);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 15px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .price {
+      font-size: 3rem;
+      font-family: 'Cinzel', serif;
+      margin: 20px 0;
+    }
+
+    .price span {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .features-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ccc;
+    }
+
+    .features-list li::before {
+      content: "✦";
+      color: var(--gold-primary);
+    }
+
+    /* Add-ons Section */
+    .addons-section {
+      background: rgba(20, 20, 20, 0.5);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 40px;
+      margin-top: 60px;
+    }
+
+    .addon-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .addon-item:last-child {
+      border-bottom: none;
+    }
+
+    .checkbox-custom {
+      accent-color: var(--gold-primary);
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    /* Modal / Checkout Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--gold-primary);
+      width: 90%;
+      max-width: 600px;
+      border-radius: 12px;
+      padding: 40px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      background: #0a0a0a;
+      border: 1px solid var(--border-gold);
+      border-radius: 4px;
+      color: #fff;
+      font-family: inherit;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--gold-primary);
+    }
+
+    .order-summary {
+      background: #0a0a0a;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .order-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .order-line.total {
+      border-top: 1px solid var(--border-gold);
+      padding-top: 10px;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .payment-instructions {
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 3px solid var(--gold-primary);
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      color: var(--gold-light);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-gold);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo gold-text">THE INNER CIRCLE</div>
+        <a href="#tickets" class="btn-gold">Get Access</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="gold-text">Exclusive Celebrity<br>Meet & Greet</h1>
+      <p>An unparalleled, intimate VIP evening with world-class entertainment, luxury dining, and exclusive networking in Dallas, Texas.</p>
+
+      <div class="event-meta">
+        <div class="meta-item">📍 Dallas, TX</div>
+        <div class="meta-item">📅 Exclusive Date</div>
+        <div class="meta-item">👑 VIP Access Only</div>
+      </div>
+
+      <a href="#tickets" class="btn-gold">Reserve Your VIP Pass</a>
+    </div>
+  </section>
+
+  <!-- Ticket Selection Section -->
+  <section id="tickets" class="container">
+    <h2 class="section-title gold-text">Select Ticket Tier</h2>
+    
+    <div class="pricing-grid">
+      <!-- Standard VIP Pass -->
+      <div class="ticket-card">
+        <div>
+          <h3>Black VIP Pass</h3>
+          <div class="price gold-text">$300 <span>/ guest</span></div>
+          <ul class="features-list">
+            <li>Red Carpet Entrance</li>
+            <li>Meet & Greet Photo Session</li>
+            <li>Complimentary Signature Cocktails</li>
+            <li>Exclusive Event Access Pass</li>
+          </ul>
+        </div>
+        <button class="btn-gold" onclick="openCheckout('Black VIP Pass', 300)">Select Pass</button>
+      </div>
+
+      <!-- Gold Executive Pass -->
+      <div class="ticket-card featured">
+        <div class="badge">Most Popular</div>
+        <div>
+          <h3>Gold VIP Pass</h3>
+          <div class="price gold-text">$500 <span>/ guest</span></div>
+          <ul class="features-list">
+            <li>Everything in Black Pass</li>
+            <li>Front-Row Reserved Lounge Seating</li>
+            <li>Private VIP Bar & Gourmet Hors d'oeuvres</li>
+            <li>Signed Commemorative Merchandise</li>
+          </ul>
+        </div>
+        <button class="btn-gold" onclick="openCheckout('Gold VIP Pass', 500)">Select Pass</button>
+      </div>
+    </div>
+
+    <!-- VIP Add-ons -->
+    <div class="addons-section">
+      <h3 class="gold-text" style="margin-bottom: 20px;">VIP Add-Ons</h3>
+      
+      <div class="addon-item">
+        <div>
+          <strong>Backstage All-Access Upgrade</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Access to green room lounge and private celebrity Q&A session.</p>
+        </div>
+        <div>
+          <span style="margin-right: 15px; font-weight: 600;" class="gold-text">+$150</span>
+          <input type="checkbox" id="addon-backstage" class="checkbox-custom" value="150" data-name="Backstage Access" onchange="updateCalculations()">
+        </div>
+      </div>
+
+      <div class="addon-item">
+        <div>
+          <strong>Luxury Chauffeur Service (Dallas Metro)</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Private black car transport to and from the venue.</p>
+        </div>
+        <div>
+          <span style="margin-right: 15px; font-weight: 600;" class="gold-text">+$200</span>
+          <input type="checkbox" id="addon-transport" class="checkbox-custom" value="200" data-name="Chauffeur Transport" onchange="updateCalculations()">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout / Direct Email Payment Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-card">
+      <button class="close-modal" onclick="closeCheckout()">&times;</button>
+      <h2 class="gold-text" style="margin-bottom: 20px;">Complete Reservation</h2>
+
+      <div class="payment-instructions">
+        <strong>📌 Direct Payment Booking:</strong><br>
+        To preserve exclusive privacy, card payments are not processed directly on this site. Clicking confirm will launch your email client with your reservation details pre-filled. Our team will send payment methods directly to your inbox.
+      </div>
+
+      <form id="reservationForm" onsubmit="handleReservationSubmit(event)">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="custName" placeholder="Enter full name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="custEmail" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="custPhone" placeholder="Enter phone number" required>
+        </div>
+
+        <!-- Order Summary Breakdown -->
+        <div class="order-summary">
+          <h4 class="gold-text" style="margin-bottom: 10px;">Order Summary</h4>
+          <div class="order-line">
+            <span id="selectedTicketName">Pass</span>
+            <span id="selectedTicketPrice">$0</span>
+          </div>
+          <div id="addonSummary"></div>
+          <div class="order-line total">
+            <span>Total</span>
+            <span id="grandTotal" class="gold-text">$0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-gold" style="width: 100%;">Submit & Request Payment Info</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 The Inner Circle Dallas. All Rights Reserved. Luxury Event Management.</p>
+    </div>
+  </footer>
+
+  <!-- Dynamic Logic JavaScript -->
+  <script>
+    let selectedTicket = { name: '', price: 0 };
+    // Configured admin email for receiving ticket orders:
+    const DESTINATION_EMAIL = "managementteamadmin6@gmail.com";
+
+    function openCheckout(ticketName, ticketPrice) {
+      selectedTicket.name = ticketName;
+      selectedTicket.price = ticketPrice;
+      
+      document.getElementById('selectedTicketName').innerText = ticketName;
+      document.getElementById('selectedTicketPrice').innerText = `$${ticketPrice}`;
+      
+      updateCalculations();
+      document.getElementById('checkoutModal').style.display = 'flex';
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkoutModal').style.display = 'none';
+    }
+
+    function updateCalculations() {
+      let total = selectedTicket.price;
+      const addonSummaryDiv = document.getElementById('addonSummary');
+      addonSummaryDiv.innerHTML = '';
+
+      const addons = [
+        document.getElementById('addon-backstage'),
+        document.getElementById('addon-transport')
+      ];
+
+      addons.forEach(addon => {
+        if (addon && addon.checked) {
+          const val = parseInt(addon.value);
+          const name = addon.getAttribute('data-name');
+          total += val;
+
+          const line = document.createElement('div');
+          line.className = 'order-line';
+          line.innerHTML = `<span>${name}</span><span>+$${val}</span>`;
+          addonSummaryDiv.appendChild(line);
+        }
+      });
+
+      document.getElementById('grandTotal').innerText = `$${total}`;
+    }
+
+    function handleReservationSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('custName').value;
+      const email = document.getElementById('custEmail').value;
+      const phone = document.getElementById('custPhone').value;
+
+      let addonText = "";
+      const addons = [
+        document.getElementById('addon-backstage'),
+        document.getElementById('addon-transport')
+      ];
+
+      addons.forEach(addon => {
+        if (addon && addon.checked) {
+          addonText += `- ${addon.getAttribute('data-name')} (+$${addon.value})\n`;
+        }
+      });
+
+      if (!addonText) addonText = "None\n";
+
+      const totalAmount = document.getElementById('grandTotal').innerText;
+
+      // Construct Mailto Links directly targeting managementteamadmin6@gmail.com
+      const subject = encodeURIComponent(`VIP Ticket Order Request - ${selectedTicket.name}`);
+      const body = encodeURIComponent(
+        `Hello Inner Circle Team,\n\nI would like to complete my ticket order for The Inner Circle VIP event in Dallas, Texas.\n\n` +
+        `CUSTOMER DETAILS:\n` +
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone}\n\n` +
+        `RESERVATION DETAILS:\n` +
+        `Ticket Pass: ${selectedTicket.name} ($${selectedTicket.price})\n` +
+        `Add-ons:\n${addonText}` +
+        `Total Price: ${totalAmount}\n\n` +
+        `Please respond with your preferred payment instructions so I can finalize my reservation.\n\nThank you!`
+      );
+
+      const mailtoUrl = `mailto:${DESTINATION_EMAIL}?subject=${subject}&body=${body}`;
+
+      // Open user's default email client
+      window.location.href = mailtoUrl;
+
+      alert("Opening your email app to send the reservation request to managementteamadmin6@gmail.com! Once sent, our team will reply with payment options.");
+      closeCheckout();
+    }
+  </script>
+</body>
+</html>
